@@ -1,0 +1,71 @@
+html {
+  background-color: white;
+  font-family: sans-serif;
+}
+
+body {
+  width: 50vw;
+  margin: auto;
+  padding: 2rem;
+}
+
+img {
+  padding: 0 25%;
+  height: 50%;
+  width: 50%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.study-list {
+  width: 40%;
+  margin: auto;
+}
+
+/* Links */
+a:visited,
+a {
+  color: green;
+}
+
+a:hover {
+  color: blue;
+}
+
+.navbar > span {
+  font-weight: bold;
+  padding: 0 1rem;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.card-grid {
+  width: 75%;
+  margin: auto;
+
+  gap: 3rem;
+
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.card-grid > * {
+  display: inline-grid;
+}
+
+.card-grid .card {
+  border-style: solid;
+  border-width: 0.2rem;
+  border-radius: 1rem;
+  border-color: lightgray;
+
+  text-align: center;
+
+  padding: 1rem 0;
+
+  box-shadow: 0rem 0.1rem 1rem black;
+}

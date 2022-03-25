@@ -1,0 +1,19 @@
+/* The take quiz button at the end of study material */
+.quiz-button {
+  padding: 1rem 2rem;
+
+  border-radius: 0.5rem;
+  border-width: 0.15rem;
+  border-style: solid;
+  border-color: gray;
+
+  margin: 4rem auto;
+
+  text-decoration: none;
+  color: black !important;
+}
+
+.quiz-button:hover {
+  color: black;
+  background-color: lightgray;
+}

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Network Tech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/global.css" />
+</head>
+
+<body>
+    <header>
+        <h1 class="text-center">ATU Student Study</h1>
+
+        <div class="text-center navbar">
+            <span><a href="/">Home</a></span>
+            <span><a href="/Study/">Study Material</a></span>
+            <span><a href="/Quizzes/">Quizzes</a></span>
+            <span><a href="/About/">About</a></span>
+        </div>
+
+        <hr />
+    </header>
+
+    <div>
+        <h1 class="text-center">Network Tech 2</h1>
+        <h1>Routing</h1>
+        <p>
+            For data, there are multiple paths in which data (packets) can be
+            transferred. The paths consist of routers with information being
+            transferred router-to-router in hops.
+        </p>
+        <p>
+            Routing is an extremely complex process. It uses the routing table which
+            can be statically and dynamically determined.
+        </p>
+        <h1>Terms</h1>
+        <ul>
+            <li>
+                Routing = process of sending a packet (datagram) from one network to
+                another
+            </li>
+            <li>
+                Routing table = a data structure that tells the router the next hop in
+                order to get to the destination. The table is located (in memory) on
+                each router.
+                <ul>
+                    <li>2 types = C - connection, S - static</li>
+                    <li>
+                        contains destination network/subnet mask, “next hop” address and
+                        routing metrics (cost, admin distance)
+                        <ul>
+                            <li>Admin distance: the lower = more trustworthy</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Routing protocols = software that <strong>populates</strong> routing
+                table. They will:
+                <ul>
+                    <li>Check for available routes</li>
+                    <li>
+                        Check for most efficient routes (by distance, speed, load, etc.)
+                    </li>
+                    <li>Advertise/share the efficient routes.</li>
+                </ul>
+            </li>
+        </ul>
+        <h1>Static Routing</h1>
+        <p>Type S in routing table</p>
+        <p>
+            Static Routing have admins manually update the routing table to get to the
+            remote network. It is mostly used on the peripheral networks (home/stub)
+            which have a very small routing table and use a default route of 0.0.0.0
+            (quad zero)
+        </p>
+        <h2>Advantages</h2>
+        <ul>
+            <li>
+                Very efficient as no bandwidth is wasted with routing tables being
+                exchanged between routers
+            </li>
+            <li>Possible to force data along particular path - load balancing</li>
+            <li>
+                Short routing table if there’s a default route of quad zero (0.0.0.0)
+            </li>
+        </ul>
+        <h2>Disadvantages</h2>
+        <ul>
+            <li>If a path goes down, no alternative path exists.</li>
+            <li>
+                If network topology changes, the table has to be updated manually.
+            </li>
+        </ul>
+        <h2>Autonomous Systems</h2>
+        <p>
+            They are a group of networks that share the same routing policy. (HEA,
+            Virgin Media, etc.) They are self-sustained and has a number: ASN
+            (e.g.&nbsp;ASxxxx).
+        </p>
+        <ul>
+            <li>Independent sub-section of the internet</li>
+            <li>Outside world -&gt; view as single entity</li>
+            <li>
+                One router within the AS is a border node (dual-homed) e.g.&nbsp;Level3
+            </li>
+            <li>First level routing is <strong>within</strong> an AS</li>
+            <li>Next level routing is <strong>between</strong> AS</li>
+        </ul>
+        <h1>Dynamic Routing</h1>
+        <p>
+            Example: RIP (routing information protocol), OSPD (open shortest path
+            first), IGRP, EIGRP, IS-IS, BGP
+        </p>
+        <p>
+            Dynamic routing is often used to keep the cost of maintaining the routing
+            table down.
+        </p>
+        <p>Every router would:</p>
+        <ul>
+            <li>decides which networks it wants to “tell the world” about</li>
+            <li>periodically forwards/receives ads of the router</li>
+            <li>Assimilates in new routing information into routing table.</li>
+        </ul>
+        <p>
+            The main disadvantage is that a lot of bandwidth would be wasted by
+            sending out periodic ads (routing data)
+        </p>
+        <p>
+            Two classifications of routing protocols: distance vector and link state.
+        </p>
+        <img src="Files/Untitled.png" alt="Untitled" />
+        <h2>Distance Vector</h2>
+        <p>EIP, IGRP, EIGRP</p>
+        <p>
+            Displays local information, like a sign post. In the router, simply go to
+            the RIP option and add IP gateways.
+        </p>
+        <ul>
+            <li>
+                Routers would periodically advertise FULL routing table to all
+                neighbours by broadcasting it. (10-90s updates, too frequent -
+                congestion, too slow - slow convergence)
+            </li>
+            <li>
+                Each router learns routes from its neighbours perspectives and then
+                advertises these new routes from its own perspective.
+            </li>
+            <li>
+                <strong>RIP would uses the route with the lowest hop as a preferred
+                    route.</strong>
+                <ul>
+                    <li>If same hops = perform equal load balancing</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Link State</h2>
+        <p>OSPF, etc.</p>
+        <p>
+            Looks at the state of the network (bandwidth, load, delay, reliability,
+            congestion or any combination) and decide on the most efficient route.
+        </p>
+        <ul>
+            <li>
+                Each router has a map of AS, and make the decision based on that.
+                <ul>
+                    <li>
+                        The map is done by first flooding the router with ads and make an AS
+                        map. Then calculate the shortest path using the map.
+                    </li>
+                    <li>Decided by the metric of the route</li>
+                </ul>
+            </li>
+            <li>
+                Algorithms in this would have each router telling the world (AS) about
+                its neighbours.
+            </li>
+            <li>Router multicasts updates whenever this network topology changes</li>
+        </ul>
+        <h3>Benefits</h3>
+        <ul>
+            <li>Routing info propagates quicker and more stable than RIP</li>
+            <li>
+                Generates lower volume of traffic, as it would only advertise the
+                sections that are changed.
+            </li>
+        </ul>
+        <h3>Routing over UDP</h3>
+        <ul>
+            <li>Uses multicasting: 224.0.0.5, 224.0.0.6</li>
+            <li>
+                Can perform load balancing - distribute network traffic across
+                equivalent routes - creates greater flexibility.
+            </li>
+        </ul>
+        <h3>Metric of the Route</h3>
+        <p>Best route = lowest cost, calculated from bandwidth</p>
+        <p>Formula:Cost = 10^8/bandwidth</p>
+        <h1>Routing in the Real World</h1>
+        <img src="Files/Untitled%201.png" alt="Untitled" />
+        <p>
+            From the diagram, there’s going to be at least one border gateway protocol
+            (BGP) in an AS that routes all the other AS together. Everything goes up
+            from lowest to the border
+        </p>
+        <ul>
+            <li>No router has knowledge of every network on the Internet</li>
+            <li>
+                Examples of AS: HEA (AS1213) has addresses 193.1.0.0/16 up to
+                192.1.255.255/16
+            </li>
+        </ul>
+        <h2>IANA</h2>
+        <p>
+            It is an organisation that issue large, short-prefix blocks of IP
+            addresses to each of the five RIRS:
+            <strong>ARIN (NA), LACNIC (South America), RIPE NIC (Europe), AFRINIC (Africa)
+                and APNIC (Asia-Pacific)</strong>
+        </p>
+        <p>
+            The individual RIRs would subdivide these blocks and allocate them to
+            Local Internet Registries (LIRs) aka ISPs.
+        </p>
+        <p>
+            The autonomous system allocates addresses to its networks/LANs.
+            (193.1.56.0/21)
+        </p>
+        <h1>The GMIT IP Address</h1>
+        <p>193.1.56.14</p>
+        <ul>
+            <li>
+                193 = RIPE NCC is responsible for addresses 193...* to 195.255.255
+                destination in Europe
+            </li>
+            <li>1 = HEA assigned addresses with 193.1../16</li>
+            <li>56 = GMIT responsible for 193.1.56.*/21</li>
+            <li>14 = GMIT’s public IP addresses on the Internet</li>
+        </ul>
+        <h1>TCP & UDP</h1>
+        <p>
+            The transport layer: there are two protocols available - TCP (Transmission
+            Control Protocol) and UDP (User Datagram Protocol)
+        </p>
+        <img src="Files/Untitled%202.png" alt="Untitled" />
+        <ul>
+            <li>Protocol Data Unit (PDU) called a <strong>segment</strong></li>
+            <li><strong>End-to-end service</strong></li>
+            <li>
+                <strong>Layer 4 data stream = only relevant on source and destination
+                    device</strong>
+            </li>
+        </ul>
+        <h1>Port Numbers</h1>
+        <p>
+            They are used to identify applications running on a device on both source
+            and destination. Up to 65,536 (2^16) different port numbers.
+        </p>
+        <p>
+            It uses <strong>a socket</strong> which is an end point in communication.
+            It allows multiple software apps to simultaneously use a single IP
+            address. Format: IP:Port. Example:
+        </p>
+        <ul>
+            <li>192.168.1.70:<strong>80</strong> = HTTP</li>
+            <li>192.168.1.7:<strong>443</strong> = HTTPS</li>
+            <li>192.168.1.7:<strong>3306</strong> = MySQL</li>
+        </ul>
+        <img src="Files/Untitled%203.png" alt="Untitled" />
+        <h1>UDP and TCP</h1>
+        <img src="Files/Untitled%204.png" alt="Untitled" />
+        <h2>UDP (User Datagram Protocol)</h2>
+        <p>
+            Bare bones transport protocol. Segments may be lost or delivered out of
+            order. Deemed as
+            <strong>connection less - fast, no handshaking.</strong> Each UDP segment
+            is also handled independently of others.
+        </p>
+        <img src="Files/Untitled%205.png" alt="Untitled" />
+        <h2>TCP (Transmission Control Protocol)</h2>
+        <p>
+            TCP Layer 4 enhances services provided by layer 3 (which packets can be
+            lost) This is a <strong>reliable delivery service.</strong>
+        </p>
+        <ul>
+            <li>Point-to-point protocol - app-to-app</li>
+            <li>Full duplex - MSS: maximum segment size</li>
+            <li>Connection-oriented via handshaking</li>
+            <li>Flow controlled: sender not overwhelm receiver.</li>
+        </ul>
+        <p>Mechanism:</p>
+        <img src="Files/Untitled%206.png" alt="Untitled" />
+        <p>
+            The yellow square = windows - how much data would send/receive (windows
+            size) Segment:
+        </p>
+        <img src="Files/Untitled%207.png" alt="Untitled" />
+        <h3>Piggy Backing</h3>
+        <p>
+            TCP uses Piggy Backing. As well as application data, TCP also include
+            control information which “piggy backs” on actual data being sent.
+        </p>
+        <h3>Connection Set-Up</h3>
+        <ul>
+            <li>
+                Header: port numbers (source and destination), sequence number,
+                acknowledgement number
+            </li>
+            <li>Control: Syn, Ack</li>
+        </ul>
+        <p>
+            Two devices would synchronise on each other’s TCP initial sequence numbers
+            (OSN):
+        </p>
+        <ul>
+            <li>
+                Sequence numbers would track the order of data and ensure that no data
+                is lost.
+            </li>
+            <li>
+                ISN do not start at 0 or 1 as TCP Sequence Prediction Attacks could
+                occur, if both side started with 0.
+            </li>
+        </ul>
+        <p>Three way handshake: -&gt; SYN -&gt; SYN-ACK -&gt; ACK</p>
+        <img src="Files/Untitled%208.png" alt="Untitled" />
+        <h3>Connection Termination</h3>
+        <ul>
+            <li>Two FIN flags to terminate a session.</li>
+            <li>
+                Device enters a FIN-WAIT state. No additional data is accepted, but
+                continue to receive segment from a server
+            </li>
+        </ul>
+        <img src="Files/Untitled%209.png" alt="Untitled" />
+        <h3>TCP SYN Flooding</h3>
+        <p>
+            This is when an attacker sends a SYN request with a spoofed source IP to a
+            host. Everything will be the same but there would
+            <strong>never be a final ACK message, which results in half-open
+                connections.</strong>
+            More of this = too much backlog = Denial of Service (DoS)
+        </p>
+        <p>
+            Distributed Denial of Service (DDoS) is similar to this, but with multiple
+            attacking devices instead.
+        </p>
+        <h1>DNS</h1>
+        <p><strong>DNS = Domain Name System, uses port 53</strong></p>
+        <p>Maps (Matches) names to numbers</p>
+        <p>First place the os looks is the hosts file</p>
+        <p>
+            The DNS server come in pairs of 2 usually, and in a master and slave
+            configuration.
+        </p>
+        <p>
+            DNS translates human readable domain names to machine readable IP
+            addresses
+        </p>
+        <ul>
+            <li>Query response control</li>
+            <li>Uses in websites AND emails</li>
+            <li>
+                Can host several servers on same device, with different domains, but
+                same IP
+            </li>
+            <li>Uses UDP (user datagram protocol) as it is faster than TCP.</li>
+            <li><strong>IT IS THE WEAKEST SECURITY LINK</strong></li>
+        </ul>
+        <h1>Domain</h1>
+        <p>Domain is an adminstrative area e.g.&nbsp;.com, .net, etc.</p>
+        <ul>
+            <li>
+                It can be partitioned into sub-domains and so forth -&gt; up to 127
+                sub-domains
+            </li>
+            <li>
+                Uses <strong>FQDN (Fully Qualified Domain Name)</strong>, reading from
+                right to left
+                <ul>
+                    <li>
+                        e.g.&nbsp;timetable.gmit.ie
+                        <ul>
+                            <li>ie = administrative area - top level domain</li>
+                            <li>gmit = 2nd level domain</li>
+                            <li>timetable = subdomain</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h1>DNS (continued)</h1>
+        <p>
+            <strong>DNS IS A SCALABLE, HIERARCHICAL AND DISTRIBUTED DATABASE</strong>
+        </p>
+        <ul>
+            <li>
+                It has a total of 100k+ databases called <strong>name servers</strong>
+                <ul>
+                    <li>Each has a <strong>zone file.</strong></li>
+                    <li>Each row in the database are <strong>records</strong></li>
+                </ul>
+            </li>
+            <li>
+                Many record types
+                <ul>
+                    <li>A = IPv4 address (AAAA = IPv6 address)</li>
+                    <li><strong>CNAME = CANONICAL NAME aka alias</strong></li>
+                    <li>MX = mail server</li>
+                    <li>NS = name server</li>
+                </ul>
+            </li>
+            <li><strong>Uses port 53 - query and response control</strong></li>
+        </ul>
+        <p>
+            To display the DNS, type in command prompt:
+            <strong>ipconfig/displaydns</strong>
+        </p>
+        <p>
+            <strong>DNS would go in pairs:</strong> master/slave or primary/secondary.
+            This is to balance the load of the servers. They are both in sync.
+        </p>
+        <h1>Classes of DNS Servers</h1>
+        <ol>
+            <li>Root DNS</li>
+            <li>TLD - Top-Level Domain e.g.&nbsp;.ie, .com</li>
+            <li>
+                <strong>Authoritative</strong> DNS Servers -&gt; maintained by
+                <strong>organisation</strong> or ISP
+            </li>
+            <li>
+                <strong>Local/Cache/Default</strong> Name Servers -&gt; Uses
+                <strong>caching servers</strong> (temporary storage)
+            </li>
+        </ol>
+        <p>Once any name server learns mapping -&gt; caches</p>
+        <ul>
+            <li>Has TTL (time to live)</li>
+            <li>Root name servers are not visited often in this case.</li>
+        </ul>
+        <img src="Files/Untitled%2010.png" alt="Untitled" />
+        <h2>Root DNS</h2>
+        <ul>
+            <li>Contains mappings for all TLDs</li>
+            <li>The zone file indicates who to contact next</li>
+            <li>Has 13 routes - A route, B route, etc. They are all cloned.</li>
+        </ul>
+        <p>Format:</p>
+        <p>TLD, TTL, IN, TYPE, LINK</p>
+        <p>Example:</p>
+        <p>.ie, 172800, IN, NG, d.ns.ie</p>
+        <p>ns stands for name servers</p>
+        <h2>Top-Level Domains</h2>
+        <p>1,488 TLDs</p>
+        <p>
+            Internet Assigned Numbers Authority would classify the domains into three
+            types:
+        </p>
+        <ol>
+            <li>Country code TLD (ccTLD) = .ie, .th, .tv</li>
+            <li>Generic TLD (gTLD) = .com, .net</li>
+            <li>Infrastructure TLD - ARPA and such</li>
+        </ol>
+        <h2>Authoritative DNS servers</h2>
+        <ul>
+            <li>Contain zone files</li>
+            <li>Owned and managed by organisation / company</li>
+        </ul>
+        <h2>DNS Cache/Local/Default Servers</h2>
+        <ul>
+            <li><strong>No zone files</strong></li>
+            <li>Provided Caching service for DNS data</li>
+            <li>Located in end devices / ISP / etc</li>
+        </ul>
+        <h2>Example DNS: Google DNS</h2>
+        <p>Primary: 8.8.8.8, Secondary: 8.8.4.4</p>
+        <p>They are considered as <strong>anycast</strong> address</p>
+        <h1>DNS Queries</h1>
+        <p>Seperated into two types: recursive and iterative</p>
+        <ul>
+            <li>
+                A <strong>recursive</strong> request puts the responsibility on the root
+                server where as the…
+            </li>
+            <li>
+                I<strong>terative</strong> request spreads out the load between all the
+                DNS servers.
+            </li>
+        </ul>
+        <p>
+            In reality, <strong>recursive query</strong> is used between the machine
+            and the local DNS servers that were set up.
+            <strong>Iterative queries</strong> are used in between those DNS servers
+            and higher-up DNS servers
+        </p>
+        <h1>Zone Files</h1>
+        <p>in System32, if DNS is implemented</p>
+        <p>Zone files contain zone information -&gt; collection of records.</p>
+        <ul>
+            <li>Format: domain_name.zone</li>
+            <li>
+                Records: Resource Records (20+ types)
+                <ul>
+                    <li>
+                        Examples: SOA (Start of Authority), A/AAAA, CNAME, MX, RRSIG
+                        (digital signature)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Each domain has two servers -&gt; master & slave (primary/secondary,
+                DNS1/DNS2)
+                <ul>
+                    <li>
+                        It is possible to have more than two servers, usually in pairs.
+                    </li>
+                </ul>
+            </li>
+            <li>Slave periodically request update from Master -&gt; zone transfer</li>
+        </ul>
+        <h2>Structure</h2>
+        <img src="Files/Untitled%2011.png" alt="Untitled" />
+        <h1>DNS Spoofing (DNS Cache Spoofing)</h1>
+        <p>
+            Traditional DNS queries and responses are sent without encryption. Corrupt
+            data is introduced for those data, which would return incorrect IP
+            addresses.
+        </p>
+        <h2>Prevention</h2>
+        <ul>
+            <li>
+                Use DNSSEC (Domain Name System Security Extensions) - supported by
+                8.8.8.8
+            </li>
+            <li>Add <strong>authentication</strong> trust layer</li>
+            <li>
+                Each <strong>zone</strong> has private/public key pair
+                <ul>
+                    <li>Public key is published using DNS (DNSKEY)</li>
+                    <li>
+                        Private key is stored safe and offline, containing individualised
+                        DNS data
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Prevention Steps</h2>
+        <ol>
+            <li>Group all the records of the same type into a RR set</li>
+            <li>Generate digital structure (RRSIG) with private key</li>
+            <li>Add RRSIG to zone file</li>
+            <li>Add DNSKEY (public) to zone file.</li>
+        </ol>
+        <p>
+            Each cache receiving a response must verify the authenticity of the name
+            server.
+        </p>
+        <h2>Alternative to DNSSEC</h2>
+        <ul>
+            <li>dns.google.com (DNS-over-HTTPS)</li>
+            <li>OpenDNA</li>
+            <li>CloudFlare</li>
+        </ul>
+        <h1>Transport Layer Security (TLS)</h1>
+        <p>To be continued in week 6</p>
+        <p>
+            TLS is a follow on of SSL (Secure Socket Layer) TLS is also in the
+            application layer.
+        </p>
+        <p>
+            Two algorithms are used: <strong>encryption</strong> and
+            <strong>hash</strong> (for integrity)
+        </p>
+        <p>Security has three main components:</p>
+        <ul>
+            <li><strong>Authentication</strong> - verification</li>
+            <li>
+                <strong>Integrity</strong> - quality of data - data shouldn’t be
+                changed.
+            </li>
+            <li>
+                <strong>Confidentiality</strong> - encrypted - either symmetric or
+                asymmetric
+            </li>
+        </ul>
+        <p>TLS implements all 3 of the security components</p>
+        <h1>Types of Encryption</h1>
+        <ul>
+            <li>
+                Symmetric encryption - oldest and fastest EXCEPT on how to get a key
+                from A to B
+                <ul>
+                    <li>
+                        The key is also called, session key, symmetric key or shared key
+                    </li>
+                    <li>Size: 128/256 bits wide.</li>
+                    <li>
+                        Two types of key distribution:
+                        <ul>
+                            <li>
+                                Out-of-band key distribution - physical usage (text, owls,
+                                letter) - but slow
+                            </li>
+                            <li>In-band key distribution: RSA, DHE, ECDHE</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Algorithms used: AES (advanced encryption standard), DES (data
+                        encryption standard), CCM, GCM
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Asymmetric encryption
+                <ul>
+                    <li>
+                        Two separate keys, public and private
+                        <ul>
+                            <li>
+                                If data is <strong>encrypted</strong> by
+                                <strong>public key</strong> and <strong>decrypted</strong> by
+                                <strong>private key</strong> -&gt; determines
+                                <strong>confidentiality</strong>
+                            </li>
+                            <li>
+                                If data is <strong>encrypted</strong> by
+                                <strong>private key</strong> and <strong>decrypted</strong> by
+                                <strong>public key</strong> -&gt; determines
+                                <strong>authentication</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Size: 2k-8k bits – 4k bits require by most</li>
+                    <li>Algorithms used: RSA (usage of certificates, see below), DSA</li>
+                </ul>
+            </li>
+        </ul>
+        <h1>Certificates</h1>
+        <p>
+            Certificates are usually 509 certificates, storing the public keys. It
+            contains:
+        </p>
+        <ul>
+            <li>name of subject</li>
+            <li>name of issuer</li>
+            <li>public key value</li>
+        </ul>
+        <p>
+            Certificates can be either paid or free (if free, the integrity of the
+            issuer is also considered)
+        </p>
+        <p>Authentication is by two types:</p>
+        <ul>
+            <li>
+                One-way = default
+                <ul>
+                    <li>You don’t know who the person connected to are.</li>
+                </ul>
+            </li>
+            <li>
+                Two-way (mutual) = optional, doesn’t have as both have to have their own
+                certificates -&gt; cost money
+                <ul>
+                    <li>
+                        OR (WITHOUT CERTIFICATE) each has to give its authenticative data
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h1>TLS</h1>
+        <p>
+            TLS is a set of protocols, 4 types of protocols: TLS Handshaking, TLS
+            Change Cipher Spec, TLS Alert and TLS Record
+        </p>
+        <h2>Handshaking Protocol</h2>
+        <p>The handshaking protocol starts with:</p>
+        <ul>
+            <li>
+                Asymmetric encryption, by which the user encrypts the data by their
+                public key with the receiving end decrypting it using their private key
+            </li>
+            <li>
+                They then exchange keys (shared keys) with each other using RSA. With
+                that, they will use symmetric encryption from then onwards.
+            </li>
+        </ul>
+        <p>Three types:</p>
+        <ul>
+            <li>RSA Handshaking (described above)</li>
+            <li>Diffie - Hellman Ephermeral (DHE)</li>
+            <li>Elliptic Curve Diffie - Hellman Ephermeral (ECDHE)</li>
+        </ul>
+        <h2>Cipher Suite</h2>
+        <p>
+            Cipher suite are used to determine how the client and the server would
+            exchange information to each other for authentication purposes. Format:
+        </p>
+        <p>
+            Key Exchange Algorithm_Key Exchange_Symmetric Encryption Algorithm_Data
+            Algorithms
+        </p>
+        <ul>
+            <li>
+                Key Exchange Algorithm = how symmetric key is generated and distributed
+                (RSA, DHE, ECDHE)
+            </li>
+            <li>Key Exchange = digitial signature on d, g parameters</li>
+            <li>Symmetric Encryption Algorithm = bulk algorithm (AES*, DES, etc.)</li>
+            <li>Data Algorithms = SHA1, SHA256, etc. – secure hash algorithm</li>
+        </ul>
+        <h2>Protocols</h2>
+        <h3>RSA</h3>
+        <ol>
+            <li>
+                <strong>Client Hello</strong>
+                <ol>
+                    <li>Client sends algorithm they could use</li>
+                    <li>Server selected cipher suite to use</li>
+                </ol>
+            </li>
+            <li>
+                <strong>Server Hello</strong>
+                <ol>
+                    <li>
+                        Server gives 509 certificate with server’s public key and cipher
+                        suite preferred (authenticated via provider)
+                    </li>
+                    <li>
+                        Client generate a pre-master key (encrypted with public key in the
+                        certificate)
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <strong>Client Key Exchange</strong>
+                <ol>
+                    <li>Server’s private key decrypts the pre-master key</li>
+                </ol>
+            </li>
+            <li>
+                <strong>Change Cipher Spec</strong>
+                <ol>
+                    <li>
+                        Server sends key back and client decrypts it to make sure everything
+                        is okay
+                    </li>
+                </ol>
+            </li>
+            <li><strong>Application Data Exchanges</strong></li>
+        </ol>
+        <p>
+            RSA key encryption is not use at all in current time as if old machines
+            having the private key are passed over to someone else, they can use it in
+            a malicious way. PFS (perfect forward security) makes sure that everything
+            can be used in the future.
+        </p>
+        <h3>DHE</h3>
+        <ol>
+            <li>
+                <strong>Client Hello</strong>
+                <ol>
+                    <li>Same as with RSA</li>
+                    <li>
+                        Server generates a private number: <strong>a</strong> and the result
+                        of <strong>g^a mod P</strong> (P is the prime number)
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <strong>Server Hello</strong>
+                <ol>
+                    <li>
+                        Server sends its certificate and numbers: <strong>g, P</strong> and
+                        <strong>g^a mod P</strong>
+                    </li>
+                    <li>
+                        Client would authenticate and generates a private number<strong>: b</strong>
+                        and the result of <strong>g^b mod P</strong>
+                    </li>
+                    <li>
+                        Client would also raises the <strong>g^a mod P</strong> number by
+                        <strong>b</strong> to be (g^a mod P)^b -&gt; g^ab mod P
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <strong>Client Key Exchange</strong>
+                <ol>
+                    <li>Client sends the result of <strong>g^b mod P</strong></li>
+                    <li>
+                        Client would also raises the <strong>g^b mod P</strong> number by
+                        <strong>a</strong> to be (g^b mod P)^b -&gt; g^ab mod P (SAME AS
+                        WITHIN THE CLIENT)
+                    </li>
+                    <li>If same, the server would then generate the session ticket.</li>
+                </ol>
+            </li>
+            <li>
+                <strong>New Session Ticket</strong>
+                <ol>
+                    <li>
+                        Server packages a session ticket that sends to the client with keys
+                        (encrypted)
+                    </li>
+                </ol>
+            </li>
+            <li><strong>Application Data Exchanges</strong></li>
+        </ol>
+    </div>
+
+    <div class="flex-center">
+        <a href="/Quiz/NetworkTech/" class="quiz-button">Take Quiz (5 Mins)</a>
+    </div>
+</body>
+
+</html>
