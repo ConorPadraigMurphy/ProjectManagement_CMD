@@ -24,6 +24,7 @@ body {
   }
 
   .card-grid {
+    grid-template-columns: calc(50% - 1.5rem) calc(50% - 1.5rem) !important;
     width: 75%;
   }
 }
@@ -77,8 +78,8 @@ a:hover {
 
   gap: 3rem;
 
-  display: grid;
   grid-template-columns: 100%;
+  display: grid;
 }
 
 .card-grid > * {
