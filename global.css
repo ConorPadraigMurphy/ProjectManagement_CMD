@@ -28,6 +28,7 @@ img {
 a:visited,
 a {
   color: green;
+  margin: .5rem;
 }
 
 a:hover {
