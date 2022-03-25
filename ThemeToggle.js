@@ -10,10 +10,11 @@ function Toggle() {
     document.querySelector("html").classList.toggle("dark");
 }
 
-
-if (parseInt(window.localStorage.getItem("isDark")) == 1) {
-    document.querySelector("html").classList.toggle("dark");
-    document.getElementById("theme-button").innerText = '🌞';
-} else {
-    document.getElementById("theme-button").innerText = '🌑';
-}
+setTimeout(() => {
+    if (parseInt(window.localStorage.getItem("isDark")) == 1) {
+        document.querySelector("html").classList.toggle("dark");
+        document.getElementById("theme-button").innerText = '🌞';
+    } else {
+        document.getElementById("theme-button").innerText = '🌑';
+    }
+}, 1);
