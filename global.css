@@ -3,6 +3,16 @@ html {
   font-family: sans-serif;
 }
 
+html.dark {
+  background-color: rgb(37, 37, 37);
+  color: white;
+  font-family: sans-serif;
+}
+
+html.dark a {
+  color: #7aa0ce;
+}
+
 body {
   width: 50vw;
   margin: auto;
@@ -17,6 +27,13 @@ img {
 
 .text-center {
   text-align: center;
+}
+
+.theme-button {
+  background-color: transparent;
+  outline: 0;
+  border-width: 0;
+  cursor: pointer;
 }
 
 .study-list {
