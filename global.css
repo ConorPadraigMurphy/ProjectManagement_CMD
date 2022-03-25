@@ -14,9 +14,18 @@ html.dark a {
 }
 
 body {
-  width: 50vw;
   margin: auto;
   padding: 2rem;
+}
+
+@media only screen and (min-width: 992px) {
+  body {
+    width: 50vw;
+  }
+
+  .card-grid {
+    width: 75%;
+  }
 }
 
 img {
@@ -69,8 +78,9 @@ a:hover {
   gap: 3rem;
 
   display: grid;
-  grid-template-columns: calc(50% - 1.5rem) calc(50% - 1.5rem);
+  grid-template-columns: 100%;
 }
+
 .card-grid > * {
   display: inline-grid;
 }
