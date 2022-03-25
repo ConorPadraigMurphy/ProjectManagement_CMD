@@ -28,7 +28,7 @@ img {
 a:visited,
 a {
   color: green;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
 a:hover {
@@ -52,7 +52,7 @@ a:hover {
   gap: 3rem;
 
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: calc(50% - 1.5rem) calc(50% - 1.5rem);
 }
 .card-grid > * {
   display: inline-grid;
