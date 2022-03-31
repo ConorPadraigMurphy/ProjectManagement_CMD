@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Mobile Applications</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/ProjectManagement_CMD/global.css" />
+    <link rel="icon" type="image/x-icon" href="/ProjectManagement_CMD/Icon.png">
+    <script src="/ProjectManagement_CMD/ThemeToggle.js"></script>
+</head>
+<body>
+    <header>
+        <h1 class="text-center">ATU Student Study</h1>
+
+        <div class="text-center navbar">
+            <a href="/ProjectManagement_CMD/">Home</a>
+            <a href="/ProjectManagement_CMD/Study/">Study Material</a>
+            <a href="/ProjectManagement_CMD/Quizzes/">Quizzes</a>
+            <a href="/ProjectManagement_CMD/About/">About</a>
+            <button id="theme-button" class="theme-button" onclick="Toggle()">🌑</button>
+        </div>
+
+
+        <hr />
+    </header>
+
+    <did>
+
+        <h1 class="text-center">Mobile Applications</h1>
+
+        <h1>Topics</h1>
+
+        <h2>TYPESCRIPT</h2>
+
+        <h4>What is TypeScript?</h4>
+        <ul>
+            <li>TypeScript is a typed superset of JavaScript that complies into plain JavaScript</li>
+        </ul>
+        <h4>Why TypeScript is used?</h4>
+        <ul>
+            <li>TypeScript provides at least half the features of ES7 and is evolving all the time to provide more features of ES7</li>
+            <li>It would also include some ES7 features and others features.</li>
+            <li>Based on those two above statements, then why bother with TypeScript, just used ES6 instead</li>
+            <li>TypeScript is like a bridge to ES6+ from ES5.</li>
+            <li>More importanttly it promotes typing which ES does not.</li>
+            <li>Types: Boolean, String, Number</li>
+            <li>If you are not interested in types and want to use ES6 then you can, but will probably need to transpile it to eS^ to run in most browsers.</li>
+        </ul>
+
+        <h4>There are two main goals of TypeScript:</h4>
+        <ol>
+            <li>Provide an optional type system for JavaScript</li>
+            <li>Provide planned features from future JavaScript editions to current JavaScript engines</li>
+        </ol>
+
+        <h4>Language Type</h4>
+        <ul>
+            <li>TypeScript is a Static Programming Language</li>
+            <li>Types : Relies on data structures and their behaviourss to ensure that programms are correct</li>
+            <li>Rigid : The aim is to catch errors at development time, before runtime</li>
+
+            <li>TypeScript promotes stability and maintainability</li>
+            <li>Catches errors during development</li>
+        </ul>
+        <figure>
+            <<img src="Files/first.png" width="700" length=" 200" alt="first" />
+        </figure>
+
+        <h4>Transpile</h4>
+        <ul>
+            <li>Compiling is the general term for taking source code written in one language and transforming into another</li>
+            <li>Transpiling is as specific term for taking source code written in one language and transforming into another language that has a similar level of abstraction</li>
+            <li>TypeScript is transpiled into JavaScript for running in browsers.</li>
+            <li>Nothing prevents TypeScript being written purely in JavaScript.If transcript is written purely as typescript then after transpiling the TypeScript into JavaScript, both will be excatly the same.</li>
+        </ul>
+
+        <h4>Primitive Types</h4>
+        <ul>
+            <li>Boolean</li>
+            <li>String</li>
+            <li>Number</li>
+            <li>Array</li>
+            <li>Enum</li>
+            <li>Any</li>
+            <li>Void</li>
+        </ul>
+
+        <ul>
+            <li><h4>Boolean</h4></li>
+            <li>The most basic datatype is the simple true/false value.</li>
+            <li>Let isFalse: boolean = false;</li>
+        </ul>
+
+        <ul>
+            <li><h4>String</h4></li>
+            <li>String types plays a very vital role in any language, as in other languages, we use the type'string' to refer to these textual datatypes.TypeScript uses the double quote to surround string data.</li>
+            <li>Let name:string = "abc";</li>
+        </ul>
+
+        <ul>
+            <li><h4>Number</h4></li>
+            <li>As in JavaScript, all numbers in TypesScript are floating point values.These 'floating point'numbers get type'number'.</li>
+            <li>Let height:number= 99;</li>
+        </ul>
+
+        <ul>
+            <li><h4>Array</h4></li>
+            <li>TypeScript allows you to work with arrays of values.Array types can be written in one of two ways.</li>
+            <li>Let list:number[] = [1,2,3];</li>
+            <li>let list:Array<number> = [1,2,3];</li>
+        </ul>
+
+        <ul>
+            <li><h4>Enum</h4></li>
+            <li>An 'enum' is an easy way of giving friendly names to sets of numeric</li>
+            <li>enum color{pen = 1, pencil= 2, eraser= 4};</li>
+            <li>console.log(Color.eraser)</li>
+        </ul>
+
+        <ul>
+            <li><h4>Any</h4></li>
+            <li>We may need to describe the type of varibale that we may not know when we are writing the application</li>
+            <li>let notSure:any = 4;</li>
+        </ul>
+
+        <ul>
+            <li><h4>Void</h4></li>
+            <li>The opposite in some ways to 'any' is 'void', the absence of having any type at all.</li>
+            <li>function warnUser():void { alert("This is my warming message");}</li>
+        </ul>
+
+        <ul>
+            <li><h4>function</h4></li>
+            <li>Function taking argumenent</li>
+            <li>function myfunction(value:string):number{ let num:number = value.length; return num;}</li>
+        </ul>
+
+        <h4>Custom Types</h4>
+        <ul>
+            <li>Varibales</li>
+            <li>Classes</li>
+            <li>access Modifiers</li>
+            <li>Interfaces</li>
+            <li>Enums</li>
+        </ul>
+
+        <ul>
+            <li><h4>Variables</h4></li>
+            <li>var (ES5 an dearlier versions)</li>
+            <li>let (ES6 and later versions)</li>
+        </ul>
+        <figure>
+            <img src="Files/varr.png" width="600" length=" 200" alt="var" />
+        </figure>
+
+        <ul>
+            <li><h4>Classes</h4></li>
+            <li>Introduced in ES6</li>
+            <li>Functions and prototype based inheritance</li>
+        </ul>
+        <figure>
+            <img src="Files/class.png" width="600" length=" 200" alt="class" />
+        </figure>
+
+        <ul>
+            <li><h4>Inheritance</h4></li>
+            <li>A derived class that derives from the base class uses the extends keywords</li>
+        </ul>
+        <figure>
+            <img src="Files/inhe.png" width="600" length=" 200" alt="inhe" />
+        </figure>
+
+        <ul>
+            <li><h4>Access Modifiers</h4></li>
+            <li>public : available on instances everywhere</li>
+            <li>private: not available for access outside the class</li>
+            <li>protected: available on child classes but not on instances directly.</li>
+        </ul>
+
+        <ul>
+            <li><h4>Interfaces</h4></li>
+            <li>An interface in TypeScript is pretty much the same as an interface in just about any other statically-typed language such as C# or Java</li>
+        </ul>
+        <figure>
+            <img src="Files/int.png" width="600" length=" 200" alt="int" />
+        </figure>
+
+        <ul>
+            <li><h4>Enums</h4></li>
+            <li>An enum type in its simplest form declares as set of constants represented by identifiers</li>
+        </ul>
+        <figure>
+            <img src="Files/enu.png" width="600" length=" 200" alt="enu" />
+        </figure>
+        <h4>END OF TYPESCRIPT</h4>
+        <hr />
+        <h2> ANGULAR 11+</h2>
+        <ul>
+            <li>Angular is JavaScript Framework which allows you to create reactive Single Page Application(SPAs)</li>
+        </ul>
+
+        <ul>
+            <li><h4>Angular Anatomy</h4></li>
+            <li>An Angular App is made up of at least one Module</li>
+            <li>Inside that module there are a group of componenents</li>
+            <li>Each component representing at some functionality of the App</li>
+        </ul>
+        <figure>
+            <img src="Files/an.png" width="400" length=" 200" alt="an" />
+        </figure>
+
+        <h4>How To create Angular Application</h4>
+        <ul>
+            <li>Install the Angular CLI (Command Line Interface</li>
+            <li>npm install -g @angular/cli</li>
+            <li>Create the Angular application</li>
+            <li>ng new my-first-app</li>
+            <li>Navigate to the angular application folder:</li>
+            <li>cd my-first-app</li>
+            <li>Run the angular app:</li>
+            <li>ng serve</li>
+        </ul>
+        <h4>Angular Data Binding</h4>
+        <ul>
+            <li>Databinding can be considered communication between your Angular code and view(HTML)</li>
+        </ul>
+        <figure>
+            <img src="Files/data.png" width="400" length=" 200" alt="data" />
+            <img src="Files/pro.png" width="400" length=" 200" alt="pro" />
+        </figure>
+
+        <h4>Directives</h4>
+        <ul>
+            <li>A Directives extends HTML.A Directives can be built-in or user defined.</li>
+            <li>There are 3 types of Directives</li>
+            <li>Structural Directives</li>
+            <li>Attribute Directives</li>
+            <li>Components</li>
+        </ul>
+        <ul>
+            <li><h4>Structural Directives</h4></li>
+            <li>Structural Directives change the DOM (Document Object Model) layout by adding and removing DOM elements</li>
+            <li>One of the most common structural directives is *ngFor</li>
+        </ul>
+        <ul>
+            <li><h4>Attribute Directives</h4></li>
+            <li>
+                Atttribute directives are surrounded by brackets which signals to Angular that the appearance
+                or behaviour of the DOM elements within the directive may change depending on certain conditions.
+            </li>
+        </ul>
+        <ul>
+            <li><h4>Component</h4></li>
+            <li>Components are directives that have a template</li>
+            <li>A Component has a lifecycle managed by Angular</li>
+            <li>Angular offers lifecycle hooks that provide visibility into these key life moments and the ability to act when they occur.</li>
+        </ul>
+        <h4>Service</h4>
+        <ul>
+            <li>A Service is a class with a well-defined purpose.</li>
+            <li>Service allow for better modularity, by allowing you to extract common functionality out of components</li>
+            <li>
+                Angular comes with its own dependency injection framework for resolving dependencies, so you can have your
+                services depend on other services throughout your application, and dependency injection will resolve your
+                dependencies for you.
+
+            </li>
+        </ul>
+        <figure>
+            <img src="Files/serv.png" width="650" length=" 200" alt="data" />
+        </figure>
+        <H4>END OF ANGULAR </H4>
+        <hr />
+        <h2>IONIC 5</h2>
+        <h4>Ionic Framework</h4>
+        <ul>
+            <li>Ionic is an SDK that helps you build native-feeling mobile apps using web technologies like HTML, CSS, and JavaScript</li>
+        </ul>
+        <ul>
+            <li><h4>Why Ionic</h4></li>
+            <li>Native apps need knowledge in many distinct domains e.g Android (Java), iOS(Swift).</li>
+            <li>Separate code bases.</li>
+            <li>Ionic uses web technologies-HTML, CSS, JavaScript.</li>
+            <li>Write Once Run Anywhere</li>
+        </ul>
+        <ul>
+            <li><h4>Ionic Application</h4></li>
+            <li>Install Ionic & Cordova</li>
+            <li>npm install -g cordova ionic</li>
+            <li>Ionic start ApplicationName blank</li>
+            <li>Ionic start myApp blank</li>
+            <li>Ionic Serve</li>
+        </ul>
+        <figure>
+            <img src="Files/ion.png" width="650" length=" 200" alt="ion" />
+        </figure>
+
+        <h4>Ionic Service</h4>
+        <ul>
+            <li>A Service is a class with a well-defined purpose</li>
+            <li>Service allow for better modularity, by allowing you to extract common functionality out of components</li>
+        </ul>
+        <figure>
+            <img src="Files/Iservice.png" width="650" length=" 200" alt="service" />
+        </figure>
+
+        <h4>Ionic Http Client Module</h4>
+        <ul>
+            <li>Steps involved is using Ionic's HttpClient</li>
+        </ul>
+        <ol>
+            <li>
+                Import Http Client Module from @angular/common/http and add it to the imports array
+                import {HttpClientModule}from '@angular/common/http';
+                imports:[BrowserModule,IonicModule.forRoot(),AppRoutingModule, HttpClientModule],
+                providers:[StatusBar]
+            </li>
+        </ol>
+
+        <h4>HttpClient</h4>
+        <ul>
+            <li>
+                To use  functions in the HttpClientModule, we must import HttpClient into the Service in which we wish to use
+                it, and inject it.
+                import {HttpClient}from'@angular/common/http'; constructor(public http:HttpClient){}
+            </li>
+            <li>The HppClient.get()function returns an Observable, so this must also be imported: import{Observable} from'rxjs';</li>
+        </ul>
+
+        <h4>HttpClient.Get()</h4>
+        <ul>
+            <li>NOTE: An Observable is a sequence of events that arrive asynchronously over time.</li>
+            <li>However, the Angular Service Http.get() which returns an Observable is always a single item</li>
+            <li>
+                So, in the case of Http.get(), the Observable it always a single item, not a sequence of items as
+                is the case with most other observables.
+            </li>
+        </ul>
+        <h4>Ionic Lists</h4>
+        <ul>
+            <li>
+                The List is a widely used interface element in almost any mobile app, and can include content ranging basic
+                text all the way to buttons, toggles, icons, and thumbnails.
+            </li>
+            <li>Both the list, which contains items, and the list items themselves can be any HTMl element</li>
+        </ul>
+        <figure>
+            <img src="Files/list.png" width="650" length=" 200" alt="list" />
+        </figure>
+
+        <h4>Ionic Toolbars</h4>
+        <ul>
+            <li>
+                Toolbars are positioned above or below content. When a toolbar is placed in "Ionic header" it will appear fixed
+                at the top of the content, and when it is in an "Ionic header" it will appear fixed at the bottom
+            </li>
+        </ul>
+        <figure>
+            <img src="Files/tool.png" width="650" length=" 200" alt="Toolbar" />
+        </figure>
+        <h4>Angular Life Cycle Events</h4>
+        <ul>
+            <li>Ionic embraces the life cycle events provided by Angular.The two Angular events you will find using the most are:</li>
+        </ul>
+        <figure>
+            <img src="Files/event.png" width="650" length=" 200" alt="event" />
+        </figure>
+
+        <h4>Ionic Page Events</h4>
+        <ul>
+            <li>In addition to the Angular life cycle events, Ionic Angular provides a few additional events that you can use:</li>
+        </ul>
+        <figure><img src="Files/Pevent.png" width="650" length=" 200" alt="Page Event" /></figure>
+        <h4>END OF IONIC</h4>
+    </did>
+    <div class="flex-center">
+        <a href="/ProjectManagement_CMD/Quiz/NetworkTech/" class="quiz-button">Take Quiz (5 Mins)</a>
+    </div>
+
+
+</body>
+</html>
